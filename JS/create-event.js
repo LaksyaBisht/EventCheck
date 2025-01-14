@@ -14,7 +14,7 @@ export function initializeEventCreation() {
     rewards: document.getElementById("rewards").value,
   };
 
-  fetchJSON("https://event-check-delta.vercel.app/event/create", {
+  fetchJSON("http://localhost:3000/event/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

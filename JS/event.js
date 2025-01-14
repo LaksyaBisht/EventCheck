@@ -3,7 +3,7 @@ import { fetchJSON } from "./utils.js";
 import { isLoggedIn } from "./auth.js";
 
 export function loadEvents() {
-  fetchJSON("https://event-check-delta.vercel.app/event")
+  fetchJSON("http://localhost:3000/event")
     .then((events) => {
       const container = document.getElementById("event-container");
       events.forEach((event) => {

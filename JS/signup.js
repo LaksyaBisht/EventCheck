@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isLogin) {
       body = JSON.stringify({ email, password });
-      fetch("https://event-check-delta.vercel.app/login", {
+      fetch("http://localhost:3000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: body,
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       else clubName = document.getElementById("club").value;
       console.log(clubName);
       let body = JSON.stringify({ username, email, password, role, clubName });
-      fetch("https://event-check-delta.vercel.app/register", {
+      fetch("http://localhost:3000/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: body,
