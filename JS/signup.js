@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isLogin) {
       body = JSON.stringify({ email, password });
-      fetch("http://localhost:3000/login", {
+      fetch("https://event-check-omega.vercel.app/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: body,
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       else clubName = document.getElementById("club").value;
       console.log(clubName);
       let body = JSON.stringify({ username, email, password, role, clubName });
-      fetch("http://localhost:3000/register", {
+      fetch("https://event-check-omega.vercel.app/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: body,

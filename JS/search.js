@@ -2,7 +2,7 @@ import { fetchJSON } from "./utils.js";
 export function searchEvent() {
   const query = document.getElementById("search-input").value.trim();
 
-  fetchJSON(`http://localhost:3000/search?q=${encodeURIComponent(query)}`)
+  fetchJSON(`https://event-check-omega.vercel.app/search?q=${encodeURIComponent(query)}`)
     .then((data) => {
       displayResults(data);
     })
