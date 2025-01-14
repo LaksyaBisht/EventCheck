@@ -6,7 +6,7 @@ export function loadEventDetails() {
   const event_name = urlParams.get("event_name");
 
   if (event_name) {
-    fetchJSON(`https://event-check-omega.vercel.app/event/event-details/${event_name}`, {
+    fetchJSON(`http://localhost:3000/event/event-details/${event_name}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
