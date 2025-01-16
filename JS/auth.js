@@ -7,10 +7,11 @@ export function decodeJWT(token) {
 //checking user is logged in by verifying the jwt token
 export function isLoggedIn() {
   const token = localStorage.getItem("jwt_token");
-  console.log(token);
   if (!token) return false;
 
   const decoded = decodeJWT(token);
+  if (!decoded) return false;
+
   const now = Math.floor(Date.now() / 1000);
   return decoded.exp > now;
 }
@@ -40,9 +41,18 @@ export function handleSignOut() {
 
 // Handles the login process for the user.
 export function handleLogIn() {
-  if (localStorage.getItem("jwt_token")) {
+  if (isLoggedIn()) {
     alert("Already signed in");
   } else {
     window.location.href = `${window.location.origin}/HTML/signup.html`;
   }
+}
+
+export function handleProfile() {
+  const profileLink = document.getElementById("profile-link");
+  if (profileLink) {
+    profileLink.innerText = "Loading...";
+    profileLink.disabled = true;
+  }
+  window.location.href = `${window.location.origin}/HTML/profile.html`;
 }

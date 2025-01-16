@@ -52,7 +52,7 @@ const loginUser = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { email: user.email, role: user.role },
+      {username: user.username, email: user.email, role: user.role },
       process.env.JWT_SECRET_KEY,
       { expiresIn: '1h' }
     );
@@ -64,7 +64,49 @@ const loginUser = async (req, res) => {
   }
 };
 
+const profileVisit = async (req, res) => {
+  try {
+    const username = req.params.username;
+
+    // Assuming `User` is your Mongoose model
+    const user = await User.findOne({ username: username });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Profile not found' });
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching profile details', error: err.message });
+  }
+};
+
+const profileChange = async (req, res) => {
+  try {
+    const username = req.params.username;
+    const updatedProfileData = req.body;
+
+    // Update the user's profile in the database
+    const result = await User.findOneAndUpdate(
+      { username: username }, // Query to find the user by username
+      updatedProfileData,     // Data to update
+      { new: true }           // Option to return the updated document
+    );
+
+    if (!result) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.status(200).json({ message: 'Profile updated successfully', updatedProfile: result });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update profile', details: err.message });
+  }
+};
+
+
 module.exports = {
   registerUser,
-  loginUser
+  loginUser,
+  profileVisit,
+  profileChange
 };
