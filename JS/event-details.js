@@ -20,7 +20,6 @@ export function loadEventDetails() {
         ).toDateString();
         document.getElementById("event-description").innerText =
           event.event_description;
-        document.getElementById("created-by").innerText = event.created_by;
         document.getElementById("venue").innerText = event.venue;
         document.getElementById(
           "team-size"
@@ -35,10 +34,15 @@ export function loadEventDetails() {
         const button = document.createElement("button");
         button.type = "submit";
         button.innerText = "Register";
+        button.onclick = () => handleButton(event.event_name);
         document.getElementById("event-details").append(button);
       })
       .catch(() => {
         document.getElementById("event-name").innerText = "No event";
       });
   }
+}
+
+function handleButton(event_name) {
+    window.location.href = `${window.location.origin}/HTML/event-register.html?event_name=${event_name}`;
 }
