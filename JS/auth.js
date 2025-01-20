@@ -27,9 +27,11 @@ export function checkAdmin() {
     const decodedToken = decodeJWT(token);
     if (decodedToken.role === "admin") {
       document.getElementById("create-tab").style.display = "flex";
+      document.getElementById("register-tab").style.display = "flex";
     }
   } else {
     document.getElementById("create-tab").style.display = "none";
+    document.getElementById("register-tab").style.display = "none";
   }
 }
 

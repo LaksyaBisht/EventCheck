@@ -50,6 +50,10 @@ body {
   display: none;
 }
 
+#register-tab{
+  display: none;
+}
+
 .right {
   display: flex;
   gap: 2rem;

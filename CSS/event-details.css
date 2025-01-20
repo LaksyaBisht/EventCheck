@@ -46,6 +46,10 @@ body {
   display: none;
 }
 
+#register-tab{
+  display: none;
+}
+
 .profile-dropdown {
   position: relative;
   display: inline-block;

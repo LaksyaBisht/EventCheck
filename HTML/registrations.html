@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../CSS/registrations.css">
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <table border="1" id="events-table">
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Events will be dynamically inserted here -->
+    </tbody>
+  </table>
+
+  <!-- Modal for Student List -->
+  <div id="student-list-modal" style="display: none;">
+    <h2>Registered Students for <span id="modal-event-name"></span></h2>
+    <table border="1" id="students-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Registration Number</th>
+          <th>Phone</th>
+          <th>Team Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Student rows will be dynamically inserted here -->
+      </tbody>
+    </table>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</body>
+<script src="../JS/registrations.js"></script>
+</html>
