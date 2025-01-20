@@ -48,9 +48,31 @@ const createEvent = async (req, res) => {
   }
 };
 
+const getAdminEvents = async(req, res)=>{
+  const adminUsername = req.user.username;
+
+  try{
+    const events = await Event.find({created_by: adminUsername});
+    if(!events || events.length == 0){
+      return res.status(404).json({message: "No events found for this admin"});
+    }
+
+    res.status(200).json({
+      message: "Events fetched successfully",
+      data: events
+    });
+  }
+  catch(error){
+    console.error("Error fetching events:", error);
+    res.status(500).json({ message: "Error fetching events", error: error.message });
+  }
+};
+
+
 module.exports = {
   searchEvents,
   getAllEvents,
   getEventByName,
-  createEvent
+  createEvent,
+  getAdminEvents
 };

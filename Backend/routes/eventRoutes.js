@@ -15,4 +15,6 @@ router.get('/event/event-details/:event_name', authenticateJWT, eventController.
 // Create an event
 router.post('/event/create', authenticateJWT, eventController.createEvent);
 
+router.get('/admin-dashboard', authenticateJWT, eventController.getAdminEvents);
+
 module.exports = router;

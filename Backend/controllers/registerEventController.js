@@ -29,4 +29,32 @@ const registerEvent = async(req, res)=>{
       }
 }
 
-module.exports = {registerEvent}
+const getRegistrationsByEvent = async (req, res) => {
+  const eventName = req.params.event_name;
+
+  try {
+    // Fetch all registrations for the given event name
+    const students = await registerEvents.find({ event_name: eventName });
+
+
+    // Check if no students are registered
+    if (!students || students.length === 0) {
+      return res.status(404).json({ message: "No students registered for the event" });
+    }
+
+    // Send the students data as a response
+    res.status(200).json({
+      message: "Students fetched successfully",
+      data: students,
+    });
+  } catch (error) {
+    console.error("Error fetching students:", error);
+    res.status(500).json({
+      message: "Error fetching students",
+      error: error.message,
+    });
+  }
+};
+
+
+module.exports = {registerEvent, getRegistrationsByEvent}
