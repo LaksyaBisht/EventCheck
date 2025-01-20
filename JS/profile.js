@@ -12,7 +12,6 @@ export function loadProfileDetails() {
     if (token) {
     const decodedToken = decodeJWT(token);
     username = decodedToken.username || '';
-    console.log(username)
 
     if (username) {
         fetch(`http://localhost:3000/profile/${username}`, {
@@ -23,7 +22,7 @@ export function loadProfileDetails() {
             const username = profile.username || "N/A";
             const email = profile.email || "N/A";
             const role = profile.role || "N/A";
-            const clubName = profile.club_name || "N/A";
+            const clubName = profile.clubName || "N/A";
 
             // Update profile display
             document.getElementById("username").value = username;

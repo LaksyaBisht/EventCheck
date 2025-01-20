@@ -7,6 +7,24 @@
   <link rel="stylesheet" href="../CSS/registrations.css">
 </head>
 <body>
+  <div class="navbar">
+    <div class="logo">EventCheck</div>
+    <div class="nav-links">
+      <a href="../index.html">Events</a>
+      <a href="/HTML/create-event.html" id="create-tab">Create</a>
+      <a href="/HTML/registrations.html" id="register-tab">Registrations</a>
+    </div>
+    <div class="profile-dropdown">
+      <a href="#" title="user icons">
+        <img src="../Images/user.png" alt="Profile Icon" class="profile-icon" />
+      </a>
+      <div class="dropdown-menu">
+        <a href="#" id="log-in-link">Log In</a>
+        <a href="#" id="profile-link">Profile</a>
+        <a href="#" id="sign-out-link">Sign Out</a>
+      </div>
+    </div>
+  </div>
   <h1>Admin Dashboard</h1>
   <table border="1" id="events-table">
     <thead>
@@ -42,4 +60,5 @@
   </div>
 </body>
 <script src="../JS/registrations.js"></script>
+<script src="../JS/Main JS Files/event-page.js" type="module"></script>
 </html>
