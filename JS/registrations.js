@@ -80,3 +80,10 @@ function showStudentList(event_name){
 function closeModal() {
     document.getElementById("student-list-modal").style.display = "none";
   }
+
+function exportToExcel() {
+const table = document.getElementById("students-table");
+const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet1" });
+
+XLSX.writeFile(wb, "students_data.xlsx");
+}

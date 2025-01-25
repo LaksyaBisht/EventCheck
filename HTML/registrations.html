@@ -56,9 +56,13 @@
         <!-- Student rows will be dynamically inserted here -->
       </tbody>
     </table>
-    <button onclick="closeModal()">Close</button>
+    <div id="but">
+      <button onclick="exportToExcel()">Export to Excel</button>  
+      <button onclick="closeModal()" id ="close">Close</button>
+    </div>
   </div>
 </body>
 <script src="../JS/registrations.js"></script>
 <script src="../JS/Main JS Files/event-page.js" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
 </html>

@@ -189,6 +189,16 @@ button:active {
     font-weight: bold;
 }
 
+#but {
+  display: flex;             /* Use Flexbox */
+}
+
+#close{
+  background-color: rgb(210, 21, 21);
+}
+#close:hover{
+  background-color: red;
+}
 #student-list-modal button {
     margin-top: 1rem;
     display: block;
