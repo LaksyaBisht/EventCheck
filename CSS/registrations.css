@@ -190,7 +190,7 @@ button:active {
 }
 
 #but {
-  display: flex;             /* Use Flexbox */
+  display: flex;
 }
 
 #close{
