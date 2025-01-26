@@ -68,11 +68,26 @@ const getAdminEvents = async(req, res)=>{
   }
 };
 
+const deleteEvent = async(req, res)=>{
+  try{
+    const eventName = req.params.event_name;
+    const event = await Event.findOneAndDelete({event_name: eventName});
+    if (!event) {
+      return res.status(404).json({ success: false, message: "Event not found" });
+    }
+
+    res.status(200).json({ success: true, message: "Event deleted successfully" });
+  } 
+  catch (error) {
+    res.status(500).json({ success: false, message: "Failed to delete event", error: error.message });
+  }
+};
 
 module.exports = {
   searchEvents,
   getAllEvents,
   getEventByName,
   createEvent,
-  getAdminEvents
+  getAdminEvents,
+  deleteEvent
 };

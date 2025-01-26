@@ -17,4 +17,6 @@ router.post('/event/create', authenticateJWT, eventController.createEvent);
 
 router.get('/admin-dashboard', authenticateJWT, eventController.getAdminEvents);
 
+router.delete('/events/:event_name', authenticateJWT, eventController.deleteEvent);
+
 module.exports = router;

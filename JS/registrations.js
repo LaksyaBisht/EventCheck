@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     <td>${event.event_name}</td>
                     <td>${new Date(event.created_at).toLocaleString()}</td>
                     <td><button onclick="showStudentList('${event.event_name}')">View Students</button></td>
+                    <td><button id="close" onclick="deleteEvent('${event.event_name}  ')">Delete Event</button></td>
                 `;
             })
         }
@@ -74,6 +75,39 @@ function showStudentList(event_name){
     .catch((error) => {
         console.error("Error fetching students:", error);
         alert("Failed to fetch student list. Please try again later.");
+    });
+}
+
+function deleteEvent(event_name){
+    const token = localStorage.getItem("jwt_token");
+
+    fetch(`http://localhost:3000/events/${event_name}`, {
+        method: 'DELETE',
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        }
+    })
+    .then((response)=>{
+        if(!response.ok){
+            throw new Error("Failed to delete event")
+        }
+        removeEventRow(event_name);
+    })
+    .catch((error)=>{
+        console.error("Error deleting event:", error);
+        alert("Failed to delete the event. Please try again later.");
+    })
+}
+
+function removeEventRow(event_name) {
+    const table = document.getElementById("events-table");
+    const rows = table.querySelectorAll('tbody tr');
+    
+    rows.forEach((row) => {
+        const eventNameCell = row.cells[0];
+        if (eventNameCell.textContent === event_name) {
+            row.remove();
+        }
     });
 }
 
