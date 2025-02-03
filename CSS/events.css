@@ -54,6 +54,10 @@ body {
   display: none;
 }
 
+#history-tab{
+  display: flex;
+}
+
 .right {
   display: flex;
   gap: 2rem;
