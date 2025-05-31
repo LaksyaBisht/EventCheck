@@ -68,7 +68,6 @@ const profileVisit = async (req, res) => {
   try {
     const username = req.params.username;
 
-    // Assuming `User` is your Mongoose model
     const user = await User.findOne({ username: username });
 
     if (!user) {

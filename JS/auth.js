@@ -28,7 +28,10 @@ export function checkAdmin() {
     if (decodedToken.role === "admin") {
       document.getElementById("create-tab").style.display = "flex";
       document.getElementById("register-tab").style.display = "flex";
-      document.getElementById("history-tab").style.display = "none";
+      const ht = document.getElementById("history-tab");
+      if(ht) {
+        ht.style.display = "none";
+      }
     }
   } else {
     document.getElementById("create-tab").style.display = "none";
